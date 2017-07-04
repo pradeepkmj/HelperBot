@@ -20,7 +20,7 @@
 var conversation_result, is_wating = false, methods = {
 	chatbot: function () {
 		var $chatInput = $('.chat-window--message-input'),
-		$jsonPanel = $('#json-panel .base--textarea'),
+		//$jsonPanel = $('#json-panel .base--textarea'),
 		$loading = $('.loader'), 
 		$mic = $('.ui-button-microphone');
 
@@ -108,7 +108,7 @@ var conversation_result, is_wating = false, methods = {
 
 		        $chatInput.val(''); // clear the text input
 
-		        $jsonPanel.html(JSON.stringify(conversation_result, null, 2));
+		        //$jsonPanel.html(JSON.stringify(conversation_result, null, 2));
 
 		        var texts = conversation_result.output ? conversation_result.output.text : [];
 		        if(texts.length == 0){
@@ -296,7 +296,7 @@ var conversation_result, is_wating = false, methods = {
 
 		initToken('stt').then(function(t) {
 			sttToken = t;
-			converse('Hi Watson');
+			converse('');
 			var userAgent = window.navigator.userAgent.toLowerCase();
 			if(userAgent.indexOf('chrome') != -1 || userAgent.indexOf('firefox') != -1){
 				$mic.show();
