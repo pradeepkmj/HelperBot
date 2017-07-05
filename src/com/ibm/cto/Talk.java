@@ -107,6 +107,7 @@ public class Talk extends HttpServlet {
 
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 				System.out.println("Output from Server .... \n");
+				System.out.println("Inside else output"+br.toString());
 
 				
 				while ((output = br.readLine()) != null) {
