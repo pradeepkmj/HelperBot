@@ -100,7 +100,7 @@ public class Talk extends HttpServlet {
 				 
 				HttpURLConnection conn = (HttpURLConnection) e.openConnection();
 				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Accept", "application/xml");
+				conn.setRequestProperty("Accept", "TEXT/PLAIN");
 				if (conn.getResponseCode() != 200) {
 								throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 				}
@@ -110,11 +110,8 @@ public class Talk extends HttpServlet {
 
 				
 				while ((output = br.readLine()) != null) {
-					System.out.println(output);
-					String to_remove = "AAOutput ";
-					if(output.contains(to_remove)){
-						output = output.replace(to_remove, "");
-					} 
+						
+					
 					System.out.println(output);
 				//	String postData = "{\"output\": {\"text\": [\"data\" ]}}";
 					String postData = "{\"output\": {\"text\": [" 
