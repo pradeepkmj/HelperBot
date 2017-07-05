@@ -1,4 +1,5 @@
 package com.ibm.cto;
+
 import java.io.*;
 import java.util.Map;
 import javax.servlet.annotation.WebServlet;
@@ -43,14 +44,15 @@ import com.ibm.watson.developer_cloud.http.HttpMediaType;
 @WebServlet("/Talk")
 public class Talk extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Talk() {
-        super();
-    }
-                /**
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Talk() {
+		super();
+	}
+
+	/**
                 * @throws IOException 
                  * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
                 */
@@ -75,29 +77,7 @@ public class Talk extends HttpServlet {
         // throw new NullPointerException();
         System.out.println("before the url"  );
         System.out.println("requestMessage:" + requestMessage  );
-        try {
-            String requestMessageUpdate = requestMessage.replace(" ", "%20");
-			URL e = new URL("http://watsonservicedev.mybluemix.net/rest/WatsonService/discoveryService/uploadContent/AAInfo%20" +requestMessageUpdate);
-            System.out.println("URL: "+e.toString());   
-            HttpURLConnection conn = (HttpURLConnection) e.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "TEXT/PLAIN");
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-
-			conn.disconnect();
-		} catch (MalformedURLException arg7) {
-						arg7.printStackTrace();
-		} catch (IOException arg8) {
-						arg8.printStackTrace();
-		}
-
-		}
-		
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setContentType("application/JSON");
-		response.setCharacterEncoding("utf-8");
+       
 		if(!requestMessage.contains("Pandora")){
 		    System.out.println("InsideSupport"); 
 			ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
@@ -110,8 +90,6 @@ public class Talk extends HttpServlet {
 			try {
 				URL e = new URL("https://alscdiscovery.mybluemix.net/rest/WatsonService/ALSCdiscoveryService/Pandora%20Access%20Request");
 				System.out.println("URL: "+e.toString()); 
-			
-								 
 				HttpURLConnection conn = (HttpURLConnection) e.openConnection();
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("Accept", "application/xml ");
@@ -120,7 +98,6 @@ public class Talk extends HttpServlet {
 				}
 
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-				System.out.println("Output from Server .... \n");
 				System.out.println("Inside else output"+br.toString());
 
 				String finalStr = ""; 
@@ -141,7 +118,7 @@ public class Talk extends HttpServlet {
                                                 }
                                                 String postData = "{\"output\": {\"text\": [" 
                                                             + "\"" + finalStr  + "\"" + "]}}" ;
-                                                            System.out.println("output "+ finalStr + " " +postData);
+                                                           // System.out.println("output "+ finalStr + " " +postData);
                                                 response.getWriter().append(postData);
                                                             conn.disconnect(); 
 		
@@ -152,7 +129,7 @@ public class Talk extends HttpServlet {
 							arg8.printStackTrace();
 			}
 				
-		//System.out.println(r.toString()); 
+		
 	}						
 
     }
