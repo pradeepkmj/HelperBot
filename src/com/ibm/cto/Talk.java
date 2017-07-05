@@ -93,52 +93,39 @@ public class Talk extends HttpServlet {
 		    response.getWriter().append(r.toString());
 		}else{
 			try {
-				URL e = new URL("https://alscdiscovery.mybluemix.net/rest/WatsonService/ALSCdiscoveryService/Pandora%20Access%20Request");
-				System.out.println("URL: "+e.toString()); 
-			
-				Thread.sleep(0000);
-				 
-				HttpURLConnection conn = (HttpURLConnection) e.openConnection();
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Accept", "application/xml ");
-				if (conn.getResponseCode() != 200) {
-								throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-				}
+				Discovery discovery = new Discovery("2016-12-01");
+            discovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
+            discovery.setUsernameAndPassword("ad9a58ea-17b6-427f-b1e5-db4916aef14c", "sDoXnUe1s6Wv");
+            String environmentId = "1e184683-975a-4c05-8d42-e2a01f0f59eb";
+            String collectionId = "b4a08b82-3418-4055-ae2f-a37de9918a9f";
 
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-				System.out.println("Output from Server .... \n");
-				System.out.println("Inside else output"+br.toString());
+            // String request = new HttpServletRequest().getReqestParameter("");
 
-				
-				while ((output = br.readLine()) != null) {
-						
-					
-					System.out.println(output);
-				//	String postData = "{\"output\": {\"text\": [\"data\" ]}}";
-					String postData = "{\"output\": {\"text\": [" 
-					+ "\"" + output + "\"" + "]}}" ;
-					System.out.println("output "+ output + " " +postData);
-			    	response.getWriter().append(postData);
-					conn.disconnect();
-				}
-				
-			
-				
-		/*	ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-			service.setUsernameAndPassword(Configuration.getInstance().CONVERSATION_USERNAME, Configuration.getInstance().CONVERSATION_PASSWORD);
-				MessageRequest newMessage1 = new MessageRequest.Builder().context(contextMap).inputText(requestMessage).build();
-				
-			    MessageResponse r1 = service.message(Configuration.getInstance().CONVERSATION_WORKSPACE_ID, newMessage1).execute();
-			    Map<String, Object> inMap = r1.getOutput();
-				inMap.put("text", output);
-				r1.setOutput(inMap);*/
-			//	System.out.println(r1.toString()); 
-			System.out.println("requestMessageUpdate "+output); 
-			/*String postData = "{\"output\": {\"text\": [" 
-					+ "\"" + output + "\"" + "]}}" ;
-/*String postData = "{\"output\": {\"text\": [" 
-					+ "\"" + output + "\"" + "]}}" ;*/
-					
+            QueryRequest.Builder builder = new QueryRequest.Builder(environmentId, collectionId);
+            // builder.query("setup outlook");
+            builder.query("Pandora");
+            QueryResponse queryResponse = discovery.query(builder.build()).execute();
+
+            System.out.println("Response : " + queryResponse.getMatchingResults() + " : " + queryResponse);
+
+            Iterator ite = queryResponse.getResults().iterator();
+            LinkedTreeMap resultMap;
+
+            String result = new String();
+
+            String resultSubstring = new String();
+
+            if (ite.hasNext()) {
+
+                  resultMap = (LinkedTreeMap) ite.next();
+
+                  result = resultMap.get("text").toString();
+
+                  resultSubstring = result.substring(result.indexOf("\n"), result.length());
+            }
+            String Output = resultSubstring.trim();
+            response.getWriter().append(Output.toString());
+
 			} catch (MalformedURLException arg7) {
 							arg7.printStackTrace();
 			} catch (IOException arg8) {
