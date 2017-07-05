@@ -124,21 +124,27 @@ public class Talk extends HttpServlet {
 				System.out.println("Inside else output"+br.toString());
 
 				
-				while ((output = br.readLine()) != null) {						
-					
-					
-					System.out.println(output);
-					
+				while ((output = br.readLine()) != null)
+                                                 {                                                                     
+                                                            System.out.println(output);
+                                                            String finalStr = null;                                  
+                                                            if(finalStr == null)
+                                                            {
+                                                                        finalStr = output;
+                                                            }
+                                                            else
+                                                            {
+                                                                        finalStr += output;
+                                                            }
+                                    
+                                             
+                                                }
+                                                String postData = "{\"output\": {\"text\": [" 
+                                                            + "\"" + finalStr  + "\"" + "]}}" ;
+                                                            System.out.println("output "+ finalStr + " " +postData);
+                                                response.getWriter().append(postData);
+                                                            conn.disconnect(); 
 
-				//	String postData = "{\"output\": {\"text\": [\"data\" ]}}";
-				    
-					String postData = "{\"output\": {\"text\": [" 
-					+ "\"" + output + "\"" + "]}}" ;
-					System.out.println("output "+ output + " " +postData);
-			    	output+= output;
-				}
-				response.getWriter().append(postData);
-					conn.disconnect();
 				
 			
 				
