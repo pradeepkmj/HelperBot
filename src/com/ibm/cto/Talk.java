@@ -123,11 +123,11 @@ public class Talk extends HttpServlet {
 				System.out.println("Output from Server .... \n");
 				System.out.println("Inside else output"+br.toString());
 
-				
+				String finalStr = null; 
 				while ((output = br.readLine()) != null)
                                                  {                                                                     
                                                             System.out.println(output);
-                                                            String finalStr = null;                                  
+                                                                                             
                                                             if(finalStr == null)
                                                             {
                                                                         finalStr = output;
