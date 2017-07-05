@@ -27,8 +27,8 @@
 	<header class="_demo--heading">
 		<div class="_demo--container">
 			<a class="wordmark" href="index.jsp">
-				<span class="wordmark--left">ALSC Smart</span>
-				<span class="wordmark--right">Service Desk</span>
+				<span class="wordmark--left">ALSC </span>
+				<span class="wordmark--right">HelperBot</span>
 			</a>
 			
 			<!--nav class="heading-nav">

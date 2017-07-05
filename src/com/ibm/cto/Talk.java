@@ -83,7 +83,7 @@ public class Talk extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/JSON");
 		response.setCharacterEncoding("utf-8");
-		if(!requestMessage.contains("support")){
+		if(!requestMessage.contains("Pandora")){
 		    System.out.println("InsideSupport"); 
 			ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
 			service.setUsernameAndPassword(Configuration.getInstance().CONVERSATION_USERNAME, Configuration.getInstance().CONVERSATION_PASSWORD);
@@ -93,14 +93,14 @@ public class Talk extends HttpServlet {
 		    response.getWriter().append(r.toString());
 		}else{
 			try {
-				URL e = new URL("http://watsonservicedev.mybluemix.net/rest/WatsonService/discoveryService/downloadContent/AAOutput");
+				URL e = new URL("https://alscdiscovery.mybluemix.net/rest/WatsonService/ALSCdiscoveryService/Pandora%20Access%20Request");
 				System.out.println("URL: "+e.toString()); 
 			
-				Thread.sleep(60000);
+				Thread.sleep(0000);
 				 
 				HttpURLConnection conn = (HttpURLConnection) e.openConnection();
 				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Accept", "TEXT/PLAIN");
+				conn.setRequestProperty("Accept", "application/xml");
 				if (conn.getResponseCode() != 200) {
 								throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 				}
