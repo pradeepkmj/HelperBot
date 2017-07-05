@@ -111,7 +111,7 @@ public class Talk extends HttpServlet {
                                     
                                              
                                                 }
-				//finalStr = "TestData";
+				finalStr = "Pandora Access Request Below listed are Pre-Requisites to get access to Pandora Tool:GSK MUDID accountGSK Virtual Desktop AccessBelow listed trainings should be in completion status in http://mylearning.gsk.com/IT Service Assets & Configuration Management SOP - TEC-180-349IT Service Assets & Configuration Standard - TEC-180-491Pandora Service Asset & Configuration Management (SACM) Practitioner - TEC-180-PAN-002IT Change Management - TEC-180-653Pandora Change Management Practitioner - TEC-180-PAN-003Pandora Lite - TEC-180-PAN-001Once Pre-Requisites are complete, Follow below listed steps to request for the access: Step 1: Open Service catalog URL http://servicescatalog.gsk.com/Step 2: Search for the text ‘Pandora’ and click on ‘Start Request’ link from search result<img src='img/Pandora/pandora.png' >Step 3: Enter the short description of the request ‘Pandora Access Request for LSC Support’ and click on ‘Start Request’ button <img src='img/Pandora/PandoraLSC.png' > Step 4: Select ‘Pandora Access’ radio button and click on ‘Submit’ button<img src='img/Pandora/pandoraaccess.png' > Step 5: Select ‘Practitioner’ and click on ‘Submit’ button<img src='img/Pandora/Practitioner.png' >"
 				System.out.println("finalStr "+ finalStr + " " +      finalStr.length());
                                                 String postData = "{\"output\": {\"text\": [" 
                                                             + "\"" + finalStr  + "\"" + "]}}" ;
