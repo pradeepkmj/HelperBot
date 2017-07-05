@@ -111,10 +111,11 @@ public class Talk extends HttpServlet {
                                     
                                              
                                                 }
-				finalStr = "TestData";
+				//finalStr = "TestData";
+				System.out.println("finalStr "+ finalStr + " " +      finalStr.length());
                                                 String postData = "{\"output\": {\"text\": [" 
                                                             + "\"" + finalStr  + "\"" + "]}}" ;
-                                                           // System.out.println("output "+ finalStr + " " +postData);
+                                                           System.out.println("postData " + postData + " " + postData.length());
                                                 response.getWriter().append(postData);
                                                             conn.disconnect(); 
 		
