@@ -22,6 +22,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.FileAttribute;
 import java.util.*;
+import com.google.gson.internal.LinkedTreeMap;
+import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.CreateDocumentRequest;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.CreateDocumentResponse;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.DeleteDocumentRequest;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.DeleteDocumentResponse;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.Document;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.GetDocumentRequest;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.GetDocumentResponse;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.UpdateDocumentRequest;
+import com.ibm.watson.developer_cloud.discovery.v1.model.document.UpdateDocumentResponse;
+import com.ibm.watson.developer_cloud.discovery.v1.model.query.QueryRequest;
+import com.ibm.watson.developer_cloud.discovery.v1.model.query.QueryResponse;
+import com.ibm.watson.developer_cloud.http.HttpMediaType;
+
 /**
  * Servlet implementation class Talk
  */
