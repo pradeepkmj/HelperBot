@@ -72,11 +72,7 @@ public class Talk extends HttpServlet {
 						requestMessage = "Greetings";
 		}
 		System.out.println("requestMessage" + requestMessage  );
-		if(requestMessage.contains(", ") || requestMessage.endsWith(".com")){
-        // throw new NullPointerException();
-        System.out.println("before the url"  );
-        System.out.println("requestMessage:" + requestMessage  );
-       
+		      
 		if(!requestMessage.contains("Pandora")){
 		    System.out.println("InsideSupport"); 
 			ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
@@ -132,5 +128,4 @@ public class Talk extends HttpServlet {
 	}						
 
     }
-}
 }
