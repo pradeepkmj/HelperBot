@@ -123,7 +123,7 @@ public class Talk extends HttpServlet {
 				System.out.println("Output from Server .... \n");
 				System.out.println("Inside else output"+br.toString());
 
-				String finalStr = null; 
+				String finalStr = ""; 
 				while ((output = br.readLine()) != null)
                                                  {                                                                     
                                                             System.out.println(output);
@@ -144,34 +144,12 @@ public class Talk extends HttpServlet {
                                                             System.out.println("output "+ finalStr + " " +postData);
                                                 response.getWriter().append(postData);
                                                             conn.disconnect(); 
-
-				
-			
-				
-		/*	ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-			service.setUsernameAndPassword(Configuration.getInstance().CONVERSATION_USERNAME, Configuration.getInstance().CONVERSATION_PASSWORD);
-				MessageRequest newMessage1 = new MessageRequest.Builder().context(contextMap).inputText(requestMessage).build();
-				
-			    MessageResponse r1 = service.message(Configuration.getInstance().CONVERSATION_WORKSPACE_ID, newMessage1).execute();
-			    Map<String, Object> inMap = r1.getOutput();
-				inMap.put("text", output);
-				r1.setOutput(inMap);*/
-			//	System.out.println(r1.toString()); 
-			System.out.println("requestMessageUpdate "+output); 
-			/*String postData = "{\"output\": {\"text\": [" 
-					+ "\"" + output + "\"" + "]}}" ;
-/*String postData = "{\"output\": {\"text\": [" 
-					+ "\"" + output + "\"" + "]}}" ;*/
-					
+		
 			
 			} catch (MalformedURLException arg7) {
 							arg7.printStackTrace();
 			} catch (IOException arg8) {
 							arg8.printStackTrace();
-			}catch(InterruptedException ex) {
-				System.out.println(ex.getMessage()); 
-				ex.printStackTrace(); 
-				Thread.currentThread().interrupt();
 			}
 				
 		//System.out.println(r.toString()); 
