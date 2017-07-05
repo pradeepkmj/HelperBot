@@ -100,7 +100,7 @@ public class Talk extends HttpServlet {
 				 
 				HttpURLConnection conn = (HttpURLConnection) e.openConnection();
 				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Accept", "TEXT/PLAIN");
+				conn.setRequestProperty("Accept", "application/xml ");
 				if (conn.getResponseCode() != 200) {
 								throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 				}
