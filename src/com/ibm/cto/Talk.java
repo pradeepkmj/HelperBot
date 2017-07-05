@@ -98,7 +98,7 @@ public class Talk extends HttpServlet {
 				String finalStr = ""; 
 				while ((output = br.readLine()) != null)
                                                  {                                                                     
-                                                            System.out.println(output);
+                                                           // System.out.println(output);
                                                                                              
                                                             if(finalStr == null)
                                                             {
@@ -111,6 +111,7 @@ public class Talk extends HttpServlet {
                                     
                                              
                                                 }
+				finalStr = "TestData";
                                                 String postData = "{\"output\": {\"text\": [" 
                                                             + "\"" + finalStr  + "\"" + "]}}" ;
                                                            // System.out.println("output "+ finalStr + " " +postData);
