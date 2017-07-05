@@ -157,7 +157,7 @@ public class Talk extends HttpServlet {
 /*String postData = "{\"output\": {\"text\": [" 
 					+ "\"" + output + "\"" + "]}}" ;*/
 					
-			}
+			
 			} catch (MalformedURLException arg7) {
 							arg7.printStackTrace();
 			} catch (IOException arg8) {
@@ -169,6 +169,7 @@ public class Talk extends HttpServlet {
 			}
 				
 		//System.out.println(r.toString()); 
-								
+	}						
+
     }
 }
